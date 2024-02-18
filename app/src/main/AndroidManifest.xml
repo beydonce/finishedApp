@@ -13,35 +13,47 @@
         android:theme="@style/Theme.FitnessApp"
         tools:targetApi="31">
         <activity
-            android:name=".UploadActivity"
+            android:name=".EditProfile.UploadProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeFragment"
+            android:exported="false" />
+        <activity
+            android:name=".popularWorkout.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".popularWorkout.PopularWorkoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HallOfFame.UploadActivity"
             android:exported="false"
-            android:theme="@style/Theme.UploadActivity"/>
+            android:theme="@style/Theme.UploadActivity" />
         <activity
-            android:name=".HallOfFameActivity"
+            android:name=".HallOfFame.HallOfFameActivity"
             android:exported="false" />
         <activity
-            android:name=".NewsFullActivity"
+            android:name=".Articles.NewsFullActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".Users.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".AllUserActivity"
+            android:name=".Users.AllUserActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailedActivity"
+            android:name=".FoodCalories.DetailedActivity"
             android:exported="false" />
         <activity
-            android:name=".ArticlesActivity"
+            android:name=".Articles.ArticlesActivity"
             android:exported="false" />
         <activity
             android:name=".WorkoutActivity"
             android:exported="false" />
         <activity
-            android:name=".CalorieActivity"
+            android:name=".FoodCalories.CalorieActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Users.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,12 +62,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignupActivity"
+            android:name=".Users.SignupActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

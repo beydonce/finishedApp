@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/button"
         android:layout_width="206dp"
-        android:layout_height="564dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
@@ -19,10 +19,11 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="201dp"
-        android:layout_height="564dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="95dp"
         android:layout_marginEnd="0dp"
-        android:text="Button" />
+        android:text="Button"
+        android:onClick="move_to_popular_workouts_activity"/>
 </RelativeLayout>
