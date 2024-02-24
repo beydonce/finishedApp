@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:text="24:00:00" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,6 +33,7 @@
         android:id="@+id/recyclerView"
         android:paddingStart="0dp"
         android:paddingEnd="15dp"
-        android:paddingBottom="15dp"/>
+        android:paddingBottom="15dp"
+        android:paddingTop="80dp"/>
 
 </RelativeLayout>

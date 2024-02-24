@@ -10,14 +10,14 @@ import android.widget.Toast;
 import com.example.fitnessapp.MainActivity;
 import com.example.fitnessapp.R;
 import com.example.fitnessapp.databinding.ActivityLoginBinding;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     UserOpenHelper databaseHelper;
 
     TextView forgotPassword;
-    private FirebaseAuth auth;
+//    private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +54,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        binding.forgotpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-                startActivity(intent);
-            }
-        });
+//        binding.forgotpass.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 //        forgotPassword.setOnClickListener(new View.OnClickListener() {
 //            @Override

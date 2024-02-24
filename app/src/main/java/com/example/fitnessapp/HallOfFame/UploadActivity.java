@@ -30,11 +30,13 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class UploadActivity extends AppCompatActivity {
+
     private FloatingActionButton uploadButton;
     private ImageView uploadImage;
     EditText uploadCaption;
     ProgressBar progressBar;
     private Uri imageUri;
+    final  private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Images");
     final private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +92,9 @@ public class UploadActivity extends AppCompatActivity {
                 imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-//                        DataClass dataClass = new DataClass(uri.toString(), caption);
-//                        String key = databaseReference.push().getKey();
-//                        databaseReference.child(key).setValue(dataClass);
+                        DataClass dataClass = new DataClass(uri.toString(), caption);
+                        String key = databaseReference.push().getKey();
+                        databaseReference.child(key).setValue(dataClass);
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(UploadActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(UploadActivity.this, HallOfFameActivity.class);
