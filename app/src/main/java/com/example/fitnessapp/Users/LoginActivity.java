@@ -34,11 +34,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();
                 else{
                     databaseHelper.open();
-                    boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
+                    long id = databaseHelper.getIdByEmailPassword(email, password);
                     databaseHelper.close();
-                    if(checkCredentials == true){
+                    if(id > -1){
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                        Intent intent  = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent  = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("userId", id);
                         startActivity(intent);
                     }else{
                         Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();

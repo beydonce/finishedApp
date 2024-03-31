@@ -2,7 +2,8 @@ package com.example.fitnessapp.Users;
 
 public class User {
     private long id;
-    private String email, password;
+    private String email, name, password;
+    private byte[] image;
 
     public long getId() {
         return id;
@@ -20,6 +21,14 @@ public class User {
         this.email = email;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -28,14 +37,26 @@ public class User {
         this.password = password;
     }
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public byte[] getImage() {
+        return image;
     }
 
-    public User(long id, String email, String password) {
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public User(String email, String name, String password, byte[] image) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.image = image;
+    }
+
+    public User(long id, String email, String name, String password, byte[] image) {
         this.id = id;
         this.email = email;
+        this.name = name;
         this.password = password;
+        this.image = image;
     }
 }

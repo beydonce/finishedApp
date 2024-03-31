@@ -19,10 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fitnessapp.Articles.ArticlesActivity;
-import com.example.fitnessapp.EditProfile.ProfileDBHelper;
+import com.example.fitnessapp.EditProfile.UploadProfileActivity;
 import com.example.fitnessapp.FoodCalories.CalorieActivity;
 import com.example.fitnessapp.HallOfFame.HallOfFameActivity;
+import com.example.fitnessapp.PrivateWorkout.WorkoutActivity;
 import com.example.fitnessapp.Users.LoginActivity;
+import com.example.fitnessapp.Users.User;
+import com.example.fitnessapp.Users.UserOpenHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     private DrawerLayout drawerLayout;
     FloatingActionButton fab;
+    long userId;
 
 
     @Override
@@ -56,16 +60,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ImageView navImage = (ImageView) header.findViewById(R.id.navImage);
         TextView navName = (TextView) header.findViewById(R.id.navName);
         TextView navEmail = (TextView) header.findViewById(R.id.navEmail);
-        ProfileDBHelper dbHelper = new ProfileDBHelper(this);
-        Cursor cursor = dbHelper.getUser();
-        if (cursor.getCount() == 0){
+
+        userId = getIntent().getLongExtra("userId", -1);
+
+
+        UserOpenHelper dbHelper = new UserOpenHelper(this);
+        dbHelper.open();
+        User user = dbHelper.getById(userId);
+        dbHelper.close();
+        if (user == null){
             Toast.makeText(this, "No Profile Details", Toast.LENGTH_SHORT).show();
         } else {
-            while (cursor.moveToNext()){
-                navName.setText(""+cursor.getString(0));
-                navEmail.setText(""+cursor.getString(1));
-                byte[] imageByte = cursor.getBlob(2);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(imageByte,0,imageByte.length);
+            String name = user.getName();
+            if (name == null)
+                navName.setText("No Name");
+            else
+                navName.setText(name);
+            navEmail.setText(user.getEmail());
+            byte[] imageByte = user.getImage();
+            if (imageByte != null) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
                 navImage.setImageBitmap(bitmap);
             }
         }
@@ -130,6 +144,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     public void move_to_acc_activity(View v){
         startActivity(new Intent(this, HallOfFameActivity.class));
+    }
+    public void move_to_upload(View v) {
+        Intent intent = new Intent(this, UploadProfileActivity.class);
+        intent.putExtra("userId", userId);
+        startActivity(intent);
     }
 
 

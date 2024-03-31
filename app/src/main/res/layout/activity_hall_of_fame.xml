@@ -5,16 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".HallOfFame.HallOfFameActivity">
+
+    <!-- res/layout/timer_layout.xml -->
 
     <TextView
         android:id="@+id/timerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="40sp"
-        android:layout_centerHorizontal="true"
-        android:text="24:00:00" />
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:text="00:00:00"
+        android:gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300sp"
+        android:id="@+id/clicToDelete"
+        android:text="delete"/>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"

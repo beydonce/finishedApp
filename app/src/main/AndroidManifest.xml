@@ -7,11 +7,23 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Home Screen"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessApp"
         tools:targetApi="31">
+
+
+        <activity
+            android:name=".PrivateWorkout.WholeWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".PrivateWorkout.WorkoutsScreen"
+            android:exported="false" />
+        <activity
+            android:name=".PrivateWorkout.CreateWorkout"
+            android:exported="false" />
+
         <activity
             android:name=".EditProfile.UploadProfileActivity"
             android:exported="false" />
@@ -47,7 +59,7 @@
             android:name=".Articles.ArticlesActivity"
             android:exported="false" />
         <activity
-            android:name=".WorkoutActivity"
+            android:name=".PrivateWorkout.WorkoutActivity"
             android:exported="false" />
         <activity
             android:name=".FoodCalories.CalorieActivity"

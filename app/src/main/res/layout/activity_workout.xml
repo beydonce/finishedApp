@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WorkoutActivity">
+    tools:context=".PrivateWorkout.WorkoutActivity">
 
     <Button
         android:id="@+id/button"
@@ -14,7 +14,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="95dp"
-        android:text="Button" />
+        android:text="Button"
+        android:onClick="move_to_Workouts_screen_activity"/>
 
     <Button
         android:id="@+id/button2"

@@ -56,20 +56,27 @@ public class UserOpenHelper extends SQLiteOpenHelper {
 
     public static final String DATABASENAME = "DBusers";//שם מסד נתונים
     public static final String TABLE_USER = "tblUser";//שם הטבלה
-    public static final int DATABASEVERSION = 1;
+    public static final int DATABASEVERSION = 2;
 
     public static final String COLUMN_ID = "ID";//מפתח ראשי - מספור אוטומטי
     //פירוט שדות(שמות עמודות)
+    public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_PASS = "pass";
+    public static final String COLUMN_IMAGE = "image";
 
     //יצירת טבלה
-    private static final String CREATE_TABLE_ALL_USERS = "CREATE TABLE IF NOT EXISTS " +
-            TABLE_USER + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + COLUMN_NAME + " VARCHAR, " + COLUMN_PASS + " VARCHAR " + ");";
+    private static final String CREATE_TABLE_ALL_USERS =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_USER + "("
+            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_EMAIL + " VARCHAR, "
+            + COLUMN_NAME + " VARCHAR DEFAULT NULL, "
+            + COLUMN_PASS + " VARCHAR, "
+            + COLUMN_IMAGE + " BLOB "
+                    + ");";
 
     //מערך כולל שמות השדות(עמודות)
-    String[] allColumns = {COLUMN_ID, COLUMN_NAME, COLUMN_PASS};
+    String[] allColumns = {COLUMN_ID, COLUMN_EMAIL, COLUMN_NAME, COLUMN_PASS, COLUMN_IMAGE};
     //אובייקט מובנה אחראי מסד נתונים Sql Lite
     SQLiteDatabase database;
 
@@ -97,8 +104,10 @@ public class UserOpenHelper extends SQLiteOpenHelper {
 
     public User createUser(User c) {//יצירת רשומה- מכונית בתוך DB
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, c.getEmail());
+        values.put(COLUMN_EMAIL, c.getEmail());
+        values.put(COLUMN_NAME, c.getName());
         values.put(COLUMN_PASS, c.getPassword());
+        values.put(COLUMN_IMAGE, c.getImage());
 
         long insertId = database.insert(UserOpenHelper.TABLE_USER, null, values);
         Log.i("data", "UserCar " + insertId + "insert to database");
@@ -108,7 +117,7 @@ public class UserOpenHelper extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public ArrayList<User> getAllUsers() {// שליפת רשימת מכוניות מתוך טבלה
 
-        ArrayList<User> l = new ArrayList<User>();//אתחול רשימה
+        ArrayList<User> l = new ArrayList<>();//אתחול רשימה
         //שאילתת בחירה
         Cursor cursor = database.query(UserOpenHelper.TABLE_USER, allColumns, null, null, null, null, null);
         //אם מספר שורות גדול מ0
@@ -117,14 +126,13 @@ public class UserOpenHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 //העתקת נתונים למשתנים
                 long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
-
+                String email = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
                 String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-
                 String pass = cursor.getString(cursor.getColumnIndex(COLUMN_PASS));
+                byte[] image = cursor.getBlob(cursor.getColumnIndex(COLUMN_IMAGE));
 
                 //יצירת מכונית
-                User c = new User(name, pass);
-                c.setId(id);
+                User c = new User(id, email, name, pass, image);
                 //עדכון מפתח ראשי
 
                 //הוספת מכונית לרשימת מכוניות
@@ -135,17 +143,23 @@ public class UserOpenHelper extends SQLiteOpenHelper {
         return l;
     }
 
-    public Boolean checkEmailPassword(String email, String password) {
-        Cursor cursor = database.rawQuery("SELECT " + COLUMN_ID + " FROM " + TABLE_USER + " WHERE " + COLUMN_NAME + " = ? AND " + COLUMN_PASS + " = ?", new String[]{email, password});
+    public long getIdByEmailPassword(String email, String password) {
+        Cursor cursor = database.query(UserOpenHelper.TABLE_USER, allColumns, null, null, null, null, null);
         if (cursor.getCount() > 0) {
-            return true;
-        } else {
-            return false;
+            while (cursor.moveToNext()) {
+                long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
+                String mail = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
+                String pass = cursor.getString(cursor.getColumnIndex(COLUMN_PASS));
+
+                if (email.equals(mail) && password.equals(pass))
+                    return id;
+            }
         }
+        return -1;
     }
 
     public boolean getByEmail(String email) {
-        Cursor cursor = database.rawQuery("SELECT " + COLUMN_ID + " FROM " + TABLE_USER + " WHERE " + COLUMN_NAME + " = ? " , new String[]{email});
+        Cursor cursor = database.rawQuery("SELECT " + COLUMN_ID + " FROM " + TABLE_USER + " WHERE " + COLUMN_EMAIL + " = ? " , new String[]{email});
         if (cursor.getCount() > 0) {
             return true;
         } else {
@@ -154,18 +168,18 @@ public class UserOpenHelper extends SQLiteOpenHelper {
 
     }
 
-    public User getById(int id) {
-        Cursor cursor = database.query(UserOpenHelper.COLUMN_NAME, allColumns, null, null, null, null, null);
+    public User getById(long id) {
+        Cursor cursor = database.query(UserOpenHelper.TABLE_USER, allColumns, null, null, null, null, null);
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
-                int idc = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+                long idc = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
                 if (idc == id) {
-
-                    String email = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+                    String email = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
+                    String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                     String password = cursor.getString(cursor.getColumnIndex(COLUMN_PASS));
-//                    byte[] image = cursor.getBlob(cursor.getColumnIndex(COLUMN_IMAGE));
+                    byte[] image = cursor.getBlob(cursor.getColumnIndex(COLUMN_IMAGE));
 
-                    User c = new User(idc, password, email);
+                    User c = new User(idc, email, name, password, image);
                     return c;
                 }
             }
@@ -181,9 +195,10 @@ public class UserOpenHelper extends SQLiteOpenHelper {
     public long updateByRow(User c) {
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, c.getEmail());
+        values.put(COLUMN_EMAIL, c.getEmail());
+        values.put(COLUMN_NAME, c.getName());
         values.put(COLUMN_PASS, c.getPassword());
-//        values.put(COLUMN_IMAGE, c.getImage());
+        values.put(COLUMN_IMAGE, c.getImage());
         // Toast.makeText(null,u.toString(),Toast.LENGTH_LONG).show();
         return database.update(TABLE_USER, values, COLUMN_ID + "=" + c.getId(), null);
     }

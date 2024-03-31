@@ -72,7 +72,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Language"
+                        android:text="Details"
                         android:textColor="@color/lavender"
                         android:textSize="18sp"
                         android:textAlignment="center"

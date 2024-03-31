@@ -34,7 +34,7 @@ public class SignupActivity extends AppCompatActivity {
                         databaseHelper.close();
                         if(checkUserEmail == false && doesUserExist == false){
                             databaseHelper.open();
-                            User insert = databaseHelper.createUser(new User(email,password));
+                            User insert = databaseHelper.createUser(new User(email, null, password, null));
                             databaseHelper.close();
                             if(insert != null){
                                 Toast.makeText(SignupActivity.this, "Signup Successfully!", Toast.LENGTH_SHORT).show();

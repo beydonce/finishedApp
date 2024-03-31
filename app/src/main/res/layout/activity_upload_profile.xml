@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".EditProfile.UploadProfileActivity">
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,16 +53,7 @@
                 android:gravity="start|center_vertical"
                 android:textColor="@color/lavender"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:id="@+id/uploadEmail"
-                android:background="@drawable/lavender_border"
-                android:layout_marginTop="20dp"
-                android:padding="16dp"
-                android:hint="Enter email"
-                android:gravity="start|center_vertical"
-                android:textColor="@color/lavender"/>
+
 
 
             <Button

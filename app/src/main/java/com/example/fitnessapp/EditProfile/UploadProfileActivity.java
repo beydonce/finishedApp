@@ -19,25 +19,29 @@ import android.widget.Toast;
 
 import com.example.fitnessapp.MainActivity;
 import com.example.fitnessapp.R;
+import com.example.fitnessapp.Users.User;
+import com.example.fitnessapp.Users.UserOpenHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class UploadProfileActivity extends AppCompatActivity {
-    EditText uploadName, uploadEmail;
+    EditText uploadName;
     ImageView uploadImage;
     Button saveButton;
     private Uri uri;
     private Bitmap bitmapImage;
-    ProfileDBHelper dbHelper;
+    UserOpenHelper dbHelper;
+    long userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_profile);
-        uploadEmail = findViewById(R.id.uploadEmail);
         uploadImage = findViewById(R.id.uploadImage);
         uploadName = findViewById(R.id.uploadName);
         saveButton = findViewById(R.id.saveButton);
-        dbHelper = new ProfileDBHelper(this);
+        dbHelper = new UserOpenHelper(this);
+        userId = getIntent().getLongExtra("userId", -1);
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -80,10 +84,22 @@ public class UploadProfileActivity extends AppCompatActivity {
         });
     }
     private void storeImage(){
-        if (!uploadName.getText().toString().isEmpty() && !uploadEmail.getText().toString().isEmpty()
+        if (!uploadName.getText().toString().isEmpty()
                 && uploadImage.getDrawable() != null && bitmapImage != null){
-            dbHelper.storeData(new ProfileModelClass(uploadName.getText().toString(), uploadEmail.getText().toString(), bitmapImage));
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] blob = stream.toByteArray();
+            bitmapImage.recycle();
+
+            dbHelper.open();
+            User user = dbHelper.getById(userId);
+            user.setName(uploadName.getText().toString());
+            user.setImage(blob);
+
+            dbHelper.updateByRow(user);
+            dbHelper.close();
             Intent intent = new Intent(UploadProfileActivity.this, MainActivity.class);
+            intent.putExtra("userId", userId);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Fields are mandatory", Toast.LENGTH_SHORT).show();
