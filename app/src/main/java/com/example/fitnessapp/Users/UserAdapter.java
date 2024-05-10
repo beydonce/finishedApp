@@ -36,9 +36,6 @@ public class UserAdapter extends ArrayAdapter<User> {
         tvPass.setText(temp.getPassword());
 
 
-
-
-
         return view;
     }
 }

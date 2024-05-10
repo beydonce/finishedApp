@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -14,13 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitnessapp.R;
-import com.example.fitnessapp.PrivateWorkout.Exercise;
-import com.example.fitnessapp.PrivateWorkout.Set;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-//import com.example.main.services.AddSetServices;
-//import com.example.main.services.AddSetServicesImplementation;
 
-import java.util.ArrayList;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 
@@ -30,7 +25,6 @@ public class CreateWorkout extends AppCompatActivity implements AdapterView.OnIt
     private EditText editText_reps;
     private EditText editText_iterations;
     private EditText editText_restTime;
-//    private Button save_button;
     private FloatingActionButton floatingActionButton_doneButton;
 
 

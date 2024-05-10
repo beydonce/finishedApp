@@ -28,7 +28,7 @@
             android:name=".EditProfile.UploadProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeFragment"
+            android:name=".Fragments.HomeFragment"
             android:exported="false" />
         <activity
             android:name=".popularWorkout.DetailActivity"

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShareFragment">
+    tools:context=".Fragments.ShareFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+
+    <Button
+        android:id="@+id/shareApp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Share Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textColor="@color/lavender"/>
+        android:layout_marginTop="200dp"
+        android:text="Share App"/>
+
 
 </RelativeLayout>

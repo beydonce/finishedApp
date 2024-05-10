@@ -27,7 +27,6 @@ import java.util.List;
 public class WholeWorkout extends AppCompatActivity {
     EditText editText_WorkoutName;
     ListView listView;
-    ActivityResultLauncher<Intent> startCreateWorkoutIntent;
     FloatingActionButton floatingActionButton_done;
 
     SetAdapter setsAdapter;

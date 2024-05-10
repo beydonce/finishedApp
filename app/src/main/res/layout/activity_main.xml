@@ -27,7 +27,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_container"
-            android:name="com.example.fitnessapp.HomeFragment"
+            android:name="com.example.fitnessapp.Fragments.HomeFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout="@layout/fragment_home" />
@@ -59,7 +59,8 @@
             android:layout_marginBottom="20dp"
             android:src="@drawable/profile_vector"
             android:backgroundTint="@color/black"
-            android:onClick="move_to_upload"/>
+            android:onClick="move_to_upload"
+            />
     </RelativeLayout>
 
 

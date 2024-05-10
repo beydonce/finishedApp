@@ -1,4 +1,4 @@
-package com.example.fitnessapp;
+package com.example.fitnessapp.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.fitnessapp.HallOfFame.HallOfFameActivity;
+import com.example.fitnessapp.R;
 
 import java.util.ArrayList;
 

@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.fitnessapp.R;
-import com.example.fitnessapp.Users.User;
-import com.example.fitnessapp.Users.UserAdapter;
-import com.example.fitnessapp.Users.UserOpenHelper;
+
 
 import java.util.ArrayList;
 

@@ -4,38 +4,45 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.fitnessapp.R;
-import com.makeramen.roundedimageview.RoundedImageView;
+
 import java.util.ArrayList;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-public class HOFAdapter extends RecyclerView.Adapter<HOFAdapter.MyViewHolder> {
-    ArrayList<DataClass> dataList;
-    Context context;
-    public HOFAdapter(ArrayList<DataClass> dataList, Context context) {
-        this.dataList = dataList;
+public class HOFAdapter extends BaseAdapter {
+    private ArrayList<DataClass> dataList;
+    private Context context;
+    LayoutInflater layoutInflater;
+    public HOFAdapter(Context context, ArrayList<DataClass> dataList) {
         this.context = context;
-    }
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.staggered_item, parent, false);
-        return new MyViewHolder(view);
+        this.dataList = dataList;
     }
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Glide.with(context).load(dataList.get(position).getImageURL()).into(holder.staggeredImages);
-    }
-    @Override
-    public int getItemCount() {
+    public int getCount() {
         return dataList.size();
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        RoundedImageView staggeredImages;
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            staggeredImages = itemView.findViewById(R.id.staggeredImages);
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        if (layoutInflater == null){
+            layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
+        if (view == null){
+            view = layoutInflater.inflate(R.layout.grid_item, null);
+        }
+        ImageView gridImage = view.findViewById(R.id.gridImage);
+        TextView gridCaption = view.findViewById(R.id.gridCaption);
+        Glide.with(context).load(dataList.get(i).getImageURL()).into(gridImage);
+        gridCaption.setText(dataList.get(i).getCaption());
+        return view;
     }
 }

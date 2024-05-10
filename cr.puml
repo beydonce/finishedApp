@@ -1,0 +1,15 @@
+@startuml
+class com.example.fitnessapp.PrivateWorkout.CreateWorkout {
+# void onCreate(Bundle)
++ void onBackPressed()
++ void onItemSelected(AdapterView<?>,View,int,long)
++ void onNothingSelected(AdapterView<?>)
+- boolean isInputValid()
+- void addSetToActivityResultAndFinish(Set)
+}
+
+
+
+com.example.fitnessapp.PrivateWorkout.OnItemSelectedListener <|.. com.example.fitnessapp.PrivateWorkout.CreateWorkout
+androidx.appcompat.app.AppCompatActivity <|-- com.example.fitnessapp.PrivateWorkout.CreateWorkout
+@enduml

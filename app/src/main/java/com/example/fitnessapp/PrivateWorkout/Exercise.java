@@ -16,6 +16,7 @@ public class Exercise implements Serializable {
             this.difficulty = difficulty;
         } catch (Exception e) {
             e.printStackTrace();
+
         }
     }
 
