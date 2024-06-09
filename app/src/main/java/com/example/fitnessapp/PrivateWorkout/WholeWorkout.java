@@ -30,6 +30,7 @@ public class WholeWorkout extends AppCompatActivity {
     SetAdapter setsAdapter;
     ActivityResultLauncher<Intent> startAddSetActivityIntent;
     List<Set> sets;
+    WorkoutOpenHelper woh;
 
     @Override
     protected void onStart() {
@@ -47,6 +48,8 @@ public class WholeWorkout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whole_workout);
 
+        woh = new WorkoutOpenHelper(this);
+
         editText_WorkoutName = findViewById(R.id.activityAddWorkout_EditText_Name);
         listView = findViewById(R.id.addWorkout_ListView);
         floatingActionButton_done = findViewById(R.id.activityAddWorkout_FloatingActionButton_add);
@@ -60,7 +63,7 @@ public class WholeWorkout extends AppCompatActivity {
                     if (InputChecker.isStringInputValid(workoutName)) {
                         // Checks if the workout has at least one set
                         if (sets.size() > 0) {
-                            addWorkoutToActivityResultAndFinish(new Workout(workoutName, sets));
+                            addWorkoutToDatabaseAndFinish(new Workout(workoutName, sets));
                         } else {
                             Toast.makeText(WholeWorkout.this, "Must contain at least one set!", Toast.LENGTH_SHORT).show();
                         }
@@ -102,11 +105,8 @@ public class WholeWorkout extends AppCompatActivity {
         startAddSetActivityIntent.launch(addSetActivityIntent);
     }
 
-    private void addWorkoutToActivityResultAndFinish(Workout workout) {
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra("workout", workout);
-        // Not set from models package
-        setResult(Activity.RESULT_OK, resultIntent);
+    private void addWorkoutToDatabaseAndFinish(Workout workout) {
+        woh.insert(workout);
         finish();
     }
 

@@ -7,13 +7,13 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Workout implements Serializable {
-    private int id;
+    private long id;
     private final String name;
     private final List<Set> sets;
     private final int totalTime;
     private int creatorId;
 
-    public Workout(int id, String workoutName, List<Set> sets, int creatorId) {
+    public Workout(long id, String workoutName, List<Set> sets, int creatorId) {
         this.id = id;
         this.name = workoutName;
         this.sets = sets;
@@ -39,7 +39,7 @@ public class Workout implements Serializable {
         this.creatorId = 0;
     }
 
-    public int getId() {
+    public long getId() {
         return this.id;
     }
 
@@ -78,7 +78,7 @@ public class Workout implements Serializable {
         return String.format("[%s: %d]", this.name, this.totalTime);
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
