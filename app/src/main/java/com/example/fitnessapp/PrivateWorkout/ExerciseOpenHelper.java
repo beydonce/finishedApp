@@ -34,35 +34,25 @@ public class ExerciseOpenHelper extends DatabaseOpenHelper {
     public static final String RESET_AUTO_INCREMENT_STATEMENT = "DELETE from sqlite_sequence where name='" + TABLE_NAME + "';";
 
     public static String CREATE_INIT_EXERCISES =
-            "INSERT INTO " + TABLE_NAME + "(" +
-                    COLUMN_NAME + "," +
-                    COLUMN_DIFFICULTY + ") VALUES";
+            "INSERT INTO " + TABLE_NAME + "("
+                    + COLUMN_NAME + ","
+                    + COLUMN_DIFFICULTY + ") VALUES"
+                    + " ('Push-Up', 2),"
+                    + " ('Squat', 2),"
+                    + " ('Pull-Up', 3),"
+                    + " ('Rows', 2),"
+                    + " ('Bicep-Curl', 2),"
+                    + " ('Bench-Press', 4),"
+                    + " ('Dips', 3),"
+                    + " ('Lunges', 2),"
+                    + " ('Leg-Press', 3),"
+                    + " ('Sit-Up', 1),"
+                    + " ('Leg-Raise', 3),"
+                    + " ('Crunch', 2);";
 
     public ExerciseOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         database = getReadableDatabase();
-        // Adds exercises to the DB
-
-        exercises.put("Push-Up", 2);
-        exercises.put("Squat", 2);
-        exercises.put("Pull-Up", 3);
-        exercises.put("Rows", 2);
-        exercises.put("Bicep-Curl", 2);
-        exercises.put("Bench-Press", 4);
-        exercises.put("Dips", 3);
-        exercises.put("Lunges", 2);
-        exercises.put("Leg-Press", 3);
-        exercises.put("Sit-Up", 1);
-        exercises.put("Leg-Raise", 3);
-        exercises.put("Crunch", 2);
-        for (HashMap.Entry<String, Integer> entry : exercises.entrySet()) {
-            CREATE_INIT_EXERCISES += "(\'" + entry.getKey() + "\'," + entry.getValue() + "),";
-        }
-        CREATE_INIT_EXERCISES = CREATE_INIT_EXERCISES.substring(0, CREATE_INIT_EXERCISES.length() - 1);
-        CREATE_INIT_EXERCISES += ";";
-
-        database.execSQL(CREATE_INIT_EXERCISES);
-        Log.i("data", "Exercises Created!");
     }
 
     public Exercise insert(Exercise exercise) {

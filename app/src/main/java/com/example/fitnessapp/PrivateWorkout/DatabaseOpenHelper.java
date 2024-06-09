@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 public abstract class DatabaseOpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "fitfit.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     protected SQLiteDatabase database;
 
