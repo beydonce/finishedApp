@@ -1,3 +1,4 @@
+
 package com.example.fitnessapp.PrivateWorkout;
 import java.io.Serializable;
 public class Exercise implements Serializable {

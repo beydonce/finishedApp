@@ -1,4 +1,7 @@
+
 package com.example.fitnessapp.PrivateWorkout;
+
+import com.example.fitnessapp.PrivateWorkout.Sets.Set;
 
 import java.io.Serializable;
 import java.util.List;
@@ -80,4 +83,3 @@ public class Workout implements Serializable {
     }
 
 }
-

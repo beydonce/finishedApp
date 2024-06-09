@@ -1,4 +1,7 @@
-package com.example.fitnessapp.PrivateWorkout;
+
+package com.example.fitnessapp.PrivateWorkout.Sets;
+import com.example.fitnessapp.PrivateWorkout.Exercise;
+
 import java.io.Serializable;
 
 public class Set implements Serializable {

@@ -4,8 +4,6 @@ public class IsCheck {
 
 
 
-
-
     public void setStr(String str) {
         str = str;
     }

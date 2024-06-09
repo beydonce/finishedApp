@@ -59,7 +59,7 @@ public class ArticlesActivity extends AppCompatActivity implements View.OnClickL
         getNews("HEALTH",null);
     }
 
-    void setupRecyclerView() {
+    void setupRecyclerView() { // מאתחל את הריסקייקל וויאו
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new NewsRecyclerAdapter(articleList);
         recyclerView.setAdapter(adapter);

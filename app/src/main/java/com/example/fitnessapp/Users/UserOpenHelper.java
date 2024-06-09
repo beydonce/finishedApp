@@ -1,3 +1,4 @@
+
 package com.example.fitnessapp.Users;
 
 import android.annotation.SuppressLint;
@@ -68,11 +69,11 @@ public class UserOpenHelper extends SQLiteOpenHelper {
     //יצירת טבלה
     private static final String CREATE_TABLE_ALL_USERS =
             "CREATE TABLE IF NOT EXISTS " + TABLE_USER + "("
-            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + COLUMN_EMAIL + " VARCHAR, "
-            + COLUMN_NAME + " VARCHAR DEFAULT NULL, "
-            + COLUMN_PASS + " VARCHAR, "
-            + COLUMN_IMAGE + " BLOB "
+                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_EMAIL + " VARCHAR, "
+                    + COLUMN_NAME + " VARCHAR DEFAULT NULL, "
+                    + COLUMN_PASS + " VARCHAR, "
+                    + COLUMN_IMAGE + " BLOB "
                     + ");";
 
     //מערך כולל שמות השדות(עמודות)

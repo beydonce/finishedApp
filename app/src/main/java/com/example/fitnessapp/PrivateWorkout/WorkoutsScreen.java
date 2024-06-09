@@ -1,3 +1,4 @@
+
 package com.example.fitnessapp.PrivateWorkout;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -48,6 +49,6 @@ public class WorkoutsScreen extends AppCompatActivity {
     }
 
     public void move_to_create_workout_activity(View v) {
-    startActivity(new Intent(WorkoutsScreen.this, WholeWorkout.class));
+        startActivity(new Intent(WorkoutsScreen.this, WholeWorkout.class));
     }
 }

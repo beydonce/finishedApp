@@ -14,11 +14,9 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitnessapp.PrivateWorkout.Sets.SetAdapter;
 import com.example.fitnessapp.R;
-import com.example.fitnessapp.PrivateWorkout.InputChecker;
-import com.example.fitnessapp.PrivateWorkout.Set;
-import com.example.fitnessapp.PrivateWorkout.Workout;
-import com.example.fitnessapp.PrivateWorkout.SetAdapter;
+import com.example.fitnessapp.PrivateWorkout.Sets.Set;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

@@ -17,11 +17,12 @@ public class WorkoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workout);
     }
 
-    public void move_to_popular_workouts_activity(View v) {
-        startActivity(new Intent(WorkoutActivity.this, PopularWorkoutActivity.class));
-    }
+
     public void move_to_Workouts_screen_activity(View v) {
         startActivity(new Intent(WorkoutActivity.this, WorkoutsScreen.class));
+    }
+    public void move_to_popular_workouts_activity(View v) {
+        startActivity(new Intent(this,PopularWorkoutActivity.class));
     }
 
 

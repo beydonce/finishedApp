@@ -1,0 +1,11 @@
+@startuml
+class com.example.fitnessapp.HallOfFame.DataClass {
+- String imageURL
++ String getImageURL()
++ void setImageURL(String)
++ String getCaption()
++ void setCaption(String)
+}
+
+
+@enduml

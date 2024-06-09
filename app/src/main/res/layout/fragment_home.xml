@@ -10,153 +10,152 @@
 
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:cardBackgroundColor="@color/lavender"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        app:cardElevation="20dp"
+        app:cardBackgroundColor="@color/lavender"
         app:cardCornerRadius="20dp"
-        >
+        app:cardElevation="20dp">
 
         <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:id="@+id/imageSlider"
-            app:iss_period="1000"
             app:iss_auto_cycle="true"
-            app:iss_delay="1000"
             app:iss_corner_radius="20"
-            app:iss_title_background="@drawable/gradient"/>
+            app:iss_delay="1000"
+            app:iss_period="1000"
+            app:iss_title_background="@drawable/gradient" />
     </androidx.cardview.widget.CardView>
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:rowCount="4"
-        android:columnCount="2"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="250dp"
         android:layout_below="@+id/top_view"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="0dp"
+        android:columnCount="2"
+        android:rowCount="2"
         tools:ignore="UnknownId">
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:cardCornerRadius="15dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_row="1"
+            android:layout_row="0"
             android:layout_column="0"
             android:layout_margin="12dp"
-            app:cardElevation="12dp"
-            android:onClick="move_to_calorie_activity">
+            android:onClick="move_to_calorie_activity"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="12dp">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/baseline_fastfood_24"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/baseline_fastfood_24">
 
                 </ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:text="Food Calories"
-                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/lavender"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/lavender">
+                    android:textStyle="bold">
 
                 </TextView>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_margin="12dp"
+            android:onClick="move_to_workout_activity"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/baseline_fitness_center_24">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Work Out Plan"
+                    android:textColor="@color/lavender"
+                    android:textSize="18sp"
+                    android:textStyle="bold">
+
+                </TextView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:cardCornerRadius="15dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_margin="12dp"
-            app:cardElevation="12dp"
-            android:onClick="move_to_workout_activity">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/baseline_fitness_center_24"
-                    android:layout_gravity="center_horizontal">
-
-                </ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Work Out Plan"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/lavender">
-
-                </TextView>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:onClick="move_to_acc_activity"
             app:cardCornerRadius="15dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_row="2"
-            android:layout_column="1"
-            android:layout_margin="12dp"
-            app:cardElevation="12dp"
-            android:onClick="move_to_acc_activity">
+            app:cardElevation="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/hall_of_fame_icon"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/hall_of_fame_icon">
 
                 </ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:text="Hall Of Fame"
-                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/lavender"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/lavender">
-                </TextView>
+                    android:textStyle="bold"></TextView>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -164,37 +163,33 @@
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:cardCornerRadius="15dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_row="2"
+            android:layout_row="1"
             android:layout_column="0"
             android:layout_margin="12dp"
-            app:cardElevation="12dp"
-            android:onClick="move_to_article_activity">
+            android:onClick="move_to_article_activity"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/baseline_article_24"
-                    android:layout_gravity="center_horizontal">
-                </ImageView>
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/baseline_article_24"></ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fitness Articles"
                     android:layout_gravity="center_horizontal"
+                    android:text="Fitness Articles"
+                    android:textColor="@color/lavender"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/lavender">
-                </TextView>
+                    android:textStyle="bold"></TextView>
 
             </LinearLayout>
 

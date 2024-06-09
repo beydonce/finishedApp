@@ -20,7 +20,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="425dp"
+                android:layout_marginTop="475dp"
                 android:orientation="vertical"
                 android:padding="20dp">
 
@@ -68,16 +68,6 @@
                     android:textColor="@color/lavender"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/forgotpass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="1dp"
-                    android:padding="8dp"
-                    android:text="Forgot Password"
-                    android:textColor="@color/lavender"
-                    android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>

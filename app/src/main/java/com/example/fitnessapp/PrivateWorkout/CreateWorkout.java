@@ -1,3 +1,4 @@
+
 package com.example.fitnessapp.PrivateWorkout;
 
 import android.app.Activity;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitnessapp.PrivateWorkout.Sets.Set;
 import com.example.fitnessapp.R;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

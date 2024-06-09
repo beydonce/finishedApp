@@ -1,4 +1,5 @@
-package com.example.fitnessapp.PrivateWorkout;
+
+package com.example.fitnessapp.PrivateWorkout.Sets;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -33,23 +33,20 @@ import com.example.fitnessapp.PrivateWorkout.WorkoutActivity;
 import com.example.fitnessapp.Users.LoginActivity;
 import com.example.fitnessapp.Users.User;
 import com.example.fitnessapp.Users.UserOpenHelper;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Toolbar toolbar;
     private DrawerLayout drawerLayout;
-    FloatingActionButton fab;
     long userId;
-    Button successButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        successButton = findViewById(R.id.successButton);
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -63,7 +60,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
             toolbar.setTitle("Home");
+
         }
+
 
         View header = navigationView.getHeaderView(0);
         ImageView navImage = (ImageView) header.findViewById(R.id.navImage);
@@ -102,12 +101,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
+
         switch (item.getItemId()) {
             case R.id.nav_home:
                 toolbar.setTitle("Home");
                 toolbar.setTitleTextAppearance(this, R.style.Theme_FitnessApp);
+                Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 break;
             case R.id.nav_settings:
@@ -140,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
     public void move_to_calorie_activity(View v){
         startActivity(new Intent(this, CalorieActivity.class));
     }
@@ -157,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.putExtra("userId", userId);
         startActivity(intent);
     }
+
 
     public void showDialog(Activity activity){
         final Dialog dialog = new Dialog(activity);
@@ -182,15 +189,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-
-
         dialog.show();
 
     }
-
-
-
-
 
 
 }
